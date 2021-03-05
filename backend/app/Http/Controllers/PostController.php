@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Post;
+use App\Models\Post;
 
 
 class PostController extends Controller
@@ -13,11 +13,11 @@ class PostController extends Controller
         $posts     = Post::latest()->get();
         $body    = [ "posts" => $posts ];
 
-        return view("index",$body);
+        return view("posts.index",$body);
     }
     public function create()
     {
-        return view("create");
+        return view("posts.create");
     }
     public function store(Request $request)
     {
@@ -30,20 +30,20 @@ class PostController extends Controller
         $posts     = Post::where("id",$id)->get();
         $body    = [ "posts" => $posts ];
 
-        return view("show",$body);
+        return view("posts.show",$body);
     }
     public function edit($id)
     {
         $posts     = Post::where("id",$id)->get();
         $body    = [ "posts" => $posts ];
 
-        return view("edit",$body);
+        return view("posts.edit",$body);
     }
     public function update(Request $request, $id)
     {
         $post  = Post::find($id);
-        $post->name    = $request->title;
-        $post->content = $request->body;
+        $post->title    = $request->title;
+        $post->body = $request->body;
         $post->save();
 
         return redirect(route("posts.index"));
