@@ -1,15 +1,6 @@
-@section('title', 'create page')
-
-@section('content')
-<form action="/posts" method="post">
+<form class="" action="{{ route('posts.store') }}" method="POST">
     {{ csrf_field() }}
-    <div class="form-group">
-        <label for="exampleFormControlTextarea1">新規投稿</label>
-        <textarea class="form-control" name="body" id="exampleFormControlTextarea1" rows="3"></textarea>
-        <div class="text-center mt-3">
-            <input class="btn btn-primary" type="submit" value="投稿する">
-            <input type="hidden" name="_token" value="{{csrf_token()}}">
-        </div>
-    </div>
+    <input class="form-control" type="text" name="title" placeholder="タイトル">
+    <textarea id="" class="form-control" name="body" rows="4" placeholder="本文"></textarea>
+    <input class="form-control" type="submit" value="送信">
 </form>
-@endsection

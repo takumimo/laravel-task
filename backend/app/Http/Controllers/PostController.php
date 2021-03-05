@@ -3,73 +3,56 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Post;
+
 
 class PostController extends Controller
 {
     public function index()
     {
-        return view('posts.index');
+        $posts     = Post::latest()->get();
+        $body    = [ "posts" => $posts ];
 
+        return view("index",$body);
     }
-
     public function create()
     {
-        
-        return view('posts.create');
+        return view("create");
     }
-
     public function store(Request $request)
     {
-        $id = Auth::id();
-        $post = new Post();
-        
-        $post->body = $request->body;
-        $post->user_id = $id;
+        Post::create($request->all());
 
-        $post->save();
-
-       return redirect()->to('/posts');
+        return redirect(route("posts.index"));
     }
-
-    public function show(Post $post)
+    public function show($id)
     {
-        $usr_id = $post->user_id;
-        $user = DB::table('users')->where('id', $usr_id)->first();
-        
+        $posts     = Post::where("id",$id)->get();
+        $body    = [ "posts" => $posts ];
 
-        return view('posts.detail',['post' => $post,'user' => $user]);
+        return view("show",$body);
     }
-
     public function edit($id)
     {
-        // $usr_id = $post->user_id;
-        $post = \App\Post::findOrFail($id);
+        $posts     = Post::where("id",$id)->get();
+        $body    = [ "posts" => $posts ];
 
-        return view('posts.edit',['post' => $post]);
-        // return view('posts.edit');
+        return view("edit",$body);
     }
-
-    public function update(Request $request)
+    public function update(Request $request, $id)
     {
-        $id = $request->post_id;
-        
-        //レコードを検索
-        $post = Post::findOrFail($id);
-        
-        $post->body = $request->body;
-        
-        //保存（更新）
+        $post  = Post::find($id);
+        $post->name    = $request->title;
+        $post->content = $request->body;
         $post->save();
-        
-        return redirect()->to('/posts');
-    }
 
+        return redirect(route("posts.index"));
+    }
     public function destroy($id)
     {
-        $post = \App\Post::find($id);
-        //削除
+        $post  = Post::find($id);
         $post->delete();
 
-        return redirect()->to('/posts');
+        return redirect(route("posts.index"));
     }
 }
