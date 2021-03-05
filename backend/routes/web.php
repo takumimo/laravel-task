@@ -18,4 +18,4 @@ Route::get('/', function () {
 });
 Route::get('/home', 'HomeController@index')->name('home');
 
-Route::get('posts', 'PostController@index');
+Route::get('posts/index', 'PostController@index');
