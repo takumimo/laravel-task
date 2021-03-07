@@ -1,18 +1,21 @@
 <?php
 
 namespace Tests\Unit;
+
+use Tests\TestCase;
 use App\Models\Post;
-use PHPUnit\Framework\TestCase;
 
 class PostTest extends TestCase
 {   
+
     /**
      * A basic unit test example.
      *
      * @return void
      */
-    public function test_example()
-    {
-        $this->assertTrue(true);
+    public function testIndexPage()
+    {   
+        $response = $this->get('/');
+        $response->assertStatus(200);
     }
 }
