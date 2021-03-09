@@ -29,7 +29,7 @@
         methods: {
             addPost() {
                 this.axios
-                    .post('http://localhost:8000/api/posts', this.post)
+                    .post('http://127.0.0.1:10080/api/posts', this.post)
                     .then(response => (
                         this.$router.push({ name: 'home' })
                     ))

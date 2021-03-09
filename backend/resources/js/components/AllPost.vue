@@ -35,7 +35,7 @@
         },
         created() {
             this.axios
-                .get('http://localhost:8000/api/posts/')
+                .get('http://127.0.0.1:10080/api/posts/')
                 .then(response => {
                     this.posts = response.data;
                 });
@@ -43,7 +43,7 @@
         methods: {
             deletePost(id) { 
                 this.axios
-                    .delete(`http://localhost:8000/api/posts/${id}`)
+                    .delete(`http://127.0.0.1:10080/api/posts/${id}`)
                     .then(response => {
                         let i = this.posts.map(data => data.id).indexOf(id);
                         this.posts.splice(i, 1)

@@ -28,7 +28,7 @@
         },
         created() {
             this.axios
-                .get(`http://localhost:8000/api/posts/${this.$route.params.id}`)
+                .get(`http://127.0.0.1:10080/api/posts/${this.$route.params.id}`)
                 .then((res) => {
                     this.post = res.data;
                 });
@@ -36,7 +36,7 @@
         methods: {
             updatePost() {
                 this.axios
-                    .patch(`http://localhost:8000/api/posts/${this.$route.params.id}`, this.post)
+                    .patch(`http://127.0.0.1:10080/api/posts/${this.$route.params.id}`, this.post)
                     .then((res) => {
                         this.$router.push({ name: 'home' });
                     });
