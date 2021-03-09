@@ -31,7 +31,7 @@
                 this.axios
                     .post('http://localhost:8000/api/posts', this.post)
                     .then(response => (
-                        this.$router.push({ title: 'home' })
+                        this.$router.push({ name: 'home' })
                     ))
                     .catch(err => console.log(err))
                     .finally(() => this.loading = false)
