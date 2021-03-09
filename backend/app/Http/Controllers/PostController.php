@@ -13,10 +13,7 @@ class PostController extends Controller
         $posts = Post::all()->toArray();
         return array_reverse($posts);
     }
-    public function create()
-    {
-        return view("posts.create");
-    }
+    
     public function store(Request $request)
     {
         $post = new Post([
@@ -32,13 +29,7 @@ class PostController extends Controller
         $post = Post::find($id);
         return response()->json($post);
     }
-    public function edit($id)
-    {
-        $posts     = Post::where("id",$id)->get();
-        $body    = [ "posts" => $posts ];
-
-        return view("posts.edit",$body);
-    }
+    
     public function update(Request $request, $id)
     {
         $post = Post::find($id);
