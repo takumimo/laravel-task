@@ -1902,7 +1902,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   data: function data() {
     return {
@@ -38011,7 +38010,7 @@ var render = function() {
                 _c(
                   "router-link",
                   { staticClass: "nav-item nav-link", attrs: { to: "/" } },
-                  [_vm._v("Products List")]
+                  [_vm._v("Posts List")]
                 ),
                 _vm._v(" "),
                 _c(
@@ -38020,7 +38019,7 @@ var render = function() {
                     staticClass: "nav-item nav-link",
                     attrs: { to: "/create" }
                   },
-                  [_vm._v("Create Product")]
+                  [_vm._v("Create Post")]
                 )
               ],
               1

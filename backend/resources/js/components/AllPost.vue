@@ -7,7 +7,6 @@
             <tr>
                 <th>タイトル</th>
                 <th>本文</th>
-                <!-- <th>Actions</th> -->
             </tr>
             </thead>
             <tbody>
